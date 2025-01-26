@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AngularJS Daftar Tugas</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="stylesheet" href="app/styles.css">
+</head>
+<body>
+  <div class="container" ng-controller="TodoController as todoCtrl">
+    <h1>Daftar Tugas</h1>
+    <form ng-submit="todoCtrl.addTask()">
+      <input type="text" ng-model="todoCtrl.newTask" placeholder="tambahkan tugas baru" required>
+      <button type="submit">Tambah</button>
+    </form>
+    <ul>
+      <li ng-repeat="task in todoCtrl.tasks">
+        <span ng-class="{'completed': task.completed}">{{ task.name }}</span>
+        <button ng-click="todoCtrl.toggleTask(task)">Beralih</button>
+        <button ng-click="todoCtrl.removeTask(task)">Hapus</button>
+      </li>
+    </ul>
+  </div>
+  <script src="app/app.module.js"></script>
+  <script src="app/app.controller.js"></script>
+</body>
+</html>
